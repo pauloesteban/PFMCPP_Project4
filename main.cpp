@@ -113,10 +113,10 @@ struct FloatType
     float* floatPtr;
     FloatType( float f ) : floatPtr( new float( f ) ){}
 
-    float add( float lhs, float rhs );
-    float subtract( float lhs, float rhs );
-    float multiply( float lhs, float rhs );
-    float divide( float lhs, float rhs );
+    FloatType& add( float rhs );
+    FloatType& subtract( float rhs );
+    FloatType& multiply( float rhs );
+    FloatType& divide( float rhs );
 };
 
 struct DoubleType
@@ -124,10 +124,10 @@ struct DoubleType
     double* doublePtr;
     DoubleType( double d ) : doublePtr( new double( d ) ){}
 
-    double add( double lhs, double rhs );
-    double subtract( double lhs, double rhs );
-    double multiply( double lhs, double rhs );
-    double divide( double lhs, double rhs );
+    DoubleType& add( double rhs );
+    DoubleType& subtract( double rhs );
+    DoubleType& multiply( double rhs );
+    DoubleType& divide( double rhs );
 };
 
 struct IntType
@@ -135,90 +135,114 @@ struct IntType
     int* intPtr;
     IntType( int i ) : intPtr( new int( i ) ){}
 
-    int add( int lhs, int rhs );
-    int subtract( int lhs, int rhs );
-    int multiply( int lhs, int rhs );
-    int divide( int lhs, int rhs );
+    IntType& add( int rhs );
+    IntType& subtract( int rhs );
+    IntType& multiply( int rhs );
+    IntType& divide( int rhs );
 };
 
 //==============================================================================
-float FloatType::add( float lhs, float rhs )
+FloatType& FloatType::add( float rhs )
 {
-    return lhs + rhs;
+    *floatPtr += rhs;
+
+    return *this;
 }
 
-float FloatType::subtract( float lhs, float rhs )
+FloatType& FloatType::subtract( float rhs )
 {
-    return lhs - rhs;
+    *floatPtr -= rhs;
+
+    return *this;
 }
 
-float FloatType::multiply( float lhs, float rhs )
+FloatType& FloatType::multiply( float rhs )
 {
-    return lhs * rhs;
+    *floatPtr *= rhs;
+
+    return *this;
 }
 
-float FloatType::divide( float lhs, float rhs )
+FloatType& FloatType::divide( float rhs )
 {
     if (rhs == 0.0f)
     {
         std::cout << std::endl << "warning, floating point division by zero returns 'inf' !" << std::endl;
     }
 
-    return lhs / rhs;
+    *floatPtr /= rhs;
+
+    return *this;
 }
 
 //==============================================================================
-double DoubleType::add( double lhs, double rhs )
+DoubleType& DoubleType::add( double rhs )
 {
-    return lhs + rhs;
+    *doublePtr += rhs;
+
+    return *this;
 }
 
-double DoubleType::subtract( double lhs, double rhs )
+DoubleType& DoubleType::subtract( double rhs )
 {
-    return lhs - rhs;
+    *doublePtr -= rhs;
+
+    return *this;
 }
 
-double DoubleType::multiply( double lhs, double rhs )
+DoubleType& DoubleType::multiply( double rhs )
 {
-    return lhs * rhs;
+    *doublePtr *= rhs;
+    
+    return *this;
 }
 
-double DoubleType::divide( double lhs, double rhs )
+DoubleType& DoubleType::divide( double rhs )
 {
     if (rhs == 0.0)
     {
         std::cout << std::endl << "warning, floating point division by zero returns 'inf' !" << std::endl;
     }
 
-    return lhs / rhs;
+    *doublePtr /= rhs;
+
+    return *this;
 }
 
 //==============================================================================
-int IntType::add( int lhs, int rhs )
+IntType& IntType::add( int rhs )
 {
-    return lhs + rhs;
+    *intPtr += rhs;
+
+    return *this;
 }
 
-int IntType::subtract( int lhs, int rhs )
+IntType& IntType::subtract( int rhs )
 {
-    return lhs - rhs;
+    *intPtr -= rhs;
+
+    return *this;
 }
 
-int IntType::multiply( int lhs, int rhs )
+IntType& IntType::multiply( int rhs )
 {
-    return lhs * rhs;
+    *intPtr *= rhs;
+
+    return *this;
 }
 
-int IntType::divide( int lhs, int rhs )
+IntType& IntType::divide( int rhs )
 {
     if (rhs == 0)
     {
         std::cout << "error, integer division by zero will crash the program!";
-        std::cout << std::endl << "returning lhs" << std::endl;
-        return lhs;
+        
+        return *this;
     }
 
-    return lhs / rhs;
+    *intPtr /= rhs;
+    
+    return *this;
 }
 
 //==============================================================================
