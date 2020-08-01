@@ -111,6 +111,7 @@ good to go!
 struct FloatType
 {
     float* floatPtr;
+    FloatType( float f ) : floatPtr( new float( f ) ){}
 
     float add( float lhs, float rhs );
     float subtract( float lhs, float rhs );
@@ -121,6 +122,7 @@ struct FloatType
 struct DoubleType
 {
     double* doublePtr;
+    DoubleType( double d ) : doublePtr( new double( d ) ){}
 
     double add( double lhs, double rhs );
     double subtract( double lhs, double rhs );
@@ -130,8 +132,9 @@ struct DoubleType
 
 struct IntType
 {
-    int* intPrt;
-    
+    int* intPtr;
+    IntType( int i ) : intPtr( new int( i ) ){}
+
     int add( int lhs, int rhs );
     int subtract( int lhs, int rhs );
     int multiply( int lhs, int rhs );
