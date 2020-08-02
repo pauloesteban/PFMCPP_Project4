@@ -115,6 +115,11 @@ struct FloatType
 {
     float* floatPtr;
     FloatType( float f ) : floatPtr( new float( f ) ){}
+    ~FloatType()
+    {
+        delete floatPtr;
+        floatPtr = nullptr;
+    }
 
     FloatType& add( float rhs );
     FloatType& subtract( float rhs );
@@ -141,6 +146,11 @@ struct DoubleType
 {
     double* doublePtr;
     DoubleType( double d ) : doublePtr( new double( d ) ){}
+    ~DoubleType()
+    {
+        delete doublePtr;
+        doublePtr = nullptr;
+    }
 
     DoubleType& add( double rhs );
     DoubleType& subtract( double rhs );
@@ -167,6 +177,11 @@ struct IntType
 {
     int* intPtr;
     IntType( int i ) : intPtr( new int( i ) ){}
+    ~IntType()
+    {
+        delete intPtr;
+        intPtr = nullptr;
+    }
 
     IntType& add( int rhs );
     IntType& subtract( int rhs );
