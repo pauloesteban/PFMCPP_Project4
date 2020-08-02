@@ -107,6 +107,9 @@ good to go!
 
 #include <iostream>
 
+struct DoubleType;
+struct IntType;
+
 //==============================================================================
 struct FloatType
 {
@@ -117,6 +120,21 @@ struct FloatType
     FloatType& subtract( float rhs );
     FloatType& multiply( float rhs );
     FloatType& divide( float rhs );
+
+    FloatType& add( FloatType& rhs );
+    FloatType& subtract( FloatType& rhs );
+    FloatType& multiply( FloatType& rhs );
+    FloatType& divide( FloatType& rhs );
+
+    FloatType& add( DoubleType& rhs );
+    FloatType& subtract( DoubleType& rhs );
+    FloatType& multiply( DoubleType& rhs );
+    FloatType& divide( DoubleType& rhs );
+
+    FloatType& add( IntType& rhs );
+    FloatType& subtract( IntType& rhs );
+    FloatType& multiply( IntType& rhs );
+    FloatType& divide( IntType& rhs );
 };
 
 struct DoubleType
@@ -128,6 +146,21 @@ struct DoubleType
     DoubleType& subtract( double rhs );
     DoubleType& multiply( double rhs );
     DoubleType& divide( double rhs );
+
+    DoubleType& add( DoubleType& rhs );
+    DoubleType& subtract( DoubleType& rhs );
+    DoubleType& multiply( DoubleType& rhs );
+    DoubleType& divide( DoubleType& rhs );
+
+    DoubleType& add( IntType& rhs );
+    DoubleType& subtract( IntType& rhs );
+    DoubleType& multiply( IntType& rhs );
+    DoubleType& divide( IntType& rhs );
+
+    DoubleType& add( FloatType& rhs );
+    DoubleType& subtract( FloatType& rhs );
+    DoubleType& multiply( FloatType& rhs );
+    DoubleType& divide( FloatType& rhs );
 };
 
 struct IntType
@@ -139,6 +172,21 @@ struct IntType
     IntType& subtract( int rhs );
     IntType& multiply( int rhs );
     IntType& divide( int rhs );
+
+    IntType& add( IntType& rhs );
+    IntType& subtract( IntType& rhs );
+    IntType& multiply( IntType& rhs );
+    IntType& divide( IntType& rhs );
+
+    IntType& add( FloatType& rhs );
+    IntType& subtract( FloatType& rhs );
+    IntType& multiply( FloatType& rhs );
+    IntType& divide( FloatType& rhs );
+
+    IntType& add( DoubleType& rhs );
+    IntType& subtract( DoubleType& rhs );
+    IntType& multiply( DoubleType& rhs );
+    IntType& divide( DoubleType& rhs );
 };
 
 //==============================================================================
@@ -175,6 +223,69 @@ FloatType& FloatType::divide( float rhs )
     return *this;
 }
 
+
+FloatType& FloatType::add( FloatType& rhs )
+{
+    return add( *rhs.floatPtr );
+}
+
+FloatType& FloatType::subtract( FloatType& rhs )
+{
+    return subtract( *rhs.floatPtr );
+}
+
+FloatType& FloatType::multiply( FloatType& rhs )
+{
+    return multiply( *rhs.floatPtr );
+}
+
+FloatType& FloatType::divide( FloatType& rhs )
+{
+    return divide( *rhs.floatPtr );
+}
+
+
+FloatType& FloatType::add( DoubleType& rhs )
+{
+    return add( *rhs.doublePtr );
+}
+
+FloatType& FloatType::subtract( DoubleType& rhs )
+{
+    return subtract( *rhs.doublePtr );
+}
+
+FloatType& FloatType::multiply( DoubleType& rhs )
+{
+    return multiply( *rhs.doublePtr );
+}
+
+FloatType& FloatType::divide( DoubleType& rhs )
+{
+    return divide( *rhs.doublePtr );
+}
+
+
+FloatType& FloatType::add( IntType& rhs )
+{
+    return add( *rhs.intPtr );
+}
+
+FloatType& FloatType::subtract( IntType& rhs )
+{
+    return subtract( *rhs.intPtr );
+}
+
+FloatType& FloatType::multiply( IntType& rhs )
+{
+    return multiply( *rhs.intPtr );
+}
+
+FloatType& FloatType::divide( IntType& rhs )
+{
+    return divide( *rhs.intPtr );
+}
+
 //==============================================================================
 DoubleType& DoubleType::add( double rhs )
 {
@@ -207,6 +318,69 @@ DoubleType& DoubleType::divide( double rhs )
     *doublePtr /= rhs;
 
     return *this;
+}
+
+
+DoubleType& DoubleType::add( DoubleType& rhs )
+{
+    return add( *rhs.doublePtr );
+}
+
+DoubleType& DoubleType::subtract( DoubleType& rhs )
+{
+    return subtract( *rhs.doublePtr );
+}
+
+DoubleType& DoubleType::multiply( DoubleType& rhs )
+{
+    return multiply( *rhs.doublePtr );
+}
+
+DoubleType& DoubleType::divide( DoubleType& rhs )
+{
+    return divide( *rhs.doublePtr );
+}
+
+
+DoubleType& DoubleType::add( IntType& rhs )
+{
+    return add( *rhs.intPtr );
+}
+
+DoubleType& DoubleType::subtract( IntType& rhs )
+{
+    return subtract( *rhs.intPtr );
+}
+
+DoubleType& DoubleType::multiply( IntType& rhs )
+{
+    return multiply( *rhs.intPtr );
+}
+
+DoubleType& DoubleType::divide( IntType& rhs )
+{
+    return divide( *rhs.intPtr );
+}
+
+
+DoubleType& DoubleType::add( FloatType& rhs )
+{
+    return add( *rhs.floatPtr );
+}
+
+DoubleType& DoubleType::subtract( FloatType& rhs )
+{
+    return subtract( *rhs.floatPtr );
+}
+
+DoubleType& DoubleType::multiply( FloatType& rhs )
+{
+    return multiply( *rhs.floatPtr );
+}
+
+DoubleType& DoubleType::divide( FloatType& rhs )
+{
+    return divide( *rhs.floatPtr );
 }
 
 //==============================================================================
@@ -245,6 +419,68 @@ IntType& IntType::divide( int rhs )
     return *this;
 }
 
+
+IntType& IntType::add( IntType& rhs )
+{
+    return add( *rhs.intPtr );
+}
+
+IntType& IntType::subtract( IntType& rhs )
+{
+    return subtract( *rhs.intPtr );
+}
+
+IntType& IntType::multiply( IntType& rhs )
+{
+    return multiply( *rhs.intPtr );
+}
+
+IntType& IntType::divide( IntType& rhs )
+{
+    return divide( *rhs.intPtr );
+}
+
+
+IntType& IntType::add( FloatType& rhs )
+{
+    return add( *rhs.floatPtr );
+}
+
+IntType& IntType::subtract( FloatType& rhs )
+{
+    return subtract( *rhs.floatPtr );
+}
+
+IntType& IntType::multiply( FloatType& rhs )
+{
+    return multiply( *rhs.floatPtr );
+}
+
+IntType& IntType::divide( FloatType& rhs )
+{
+    return divide( *rhs.floatPtr );
+}
+
+
+IntType& IntType::add( DoubleType& rhs )
+{
+    return add( *rhs.doublePtr );
+}
+
+IntType& IntType::subtract( DoubleType& rhs )
+{
+    return subtract( *rhs.doublePtr );
+}
+
+IntType& IntType::multiply( DoubleType& rhs )
+{
+    return multiply( *rhs.doublePtr );
+}
+
+IntType& IntType::divide( DoubleType& rhs )
+{
+    return divide( *rhs.doublePtr );
+}
 //==============================================================================
 
 int main()
